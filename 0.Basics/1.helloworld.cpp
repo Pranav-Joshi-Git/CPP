@@ -10,7 +10,7 @@ int main() {
 // without namespace std line
 // std::cout << "Hello World" << std:endl;
 
-// Though it uses c header file, but it is run by cpp compiler
+// Though below code uses c header file, but it is run by cpp compiler
 // So it is a valid CPP program
 
 // #include <cstdio>
