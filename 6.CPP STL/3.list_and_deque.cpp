@@ -1,38 +1,77 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <list>
 
 using namespace std;
 
-// Internally - list and deque uses linked list
-// deque - same as list or vector (functions)
-// The primary difference between std::list and std::deque 
-// in the C++ STL lies in their internal memory layout and random 
-// access capabilities. While std::list is implemented as a doubly 
-// linked list with elements scattered across memory, 
-// std::deque (double-ended queue) uses a central map pointing to small, 
-// fixed-size contiguous chunks of memory. As a result, std::deque supports O(1) 
-// random access (indexing via []), whereas std::list does not support indexing 
-// and requires O(N) sequential traversal.
 
-// Add quick checklist here for when to use what? :
+// When to use:
+//
+// vector
+// → Default choice for most DSA problems.
+// → Use when you need fast random access and mostly work at the end.
+//
+// list
+// → Use when you frequently insert/delete elements at known positions.
+// → No random access using [].
+//
+// deque
+// → Use when you need fast insertion/deletion from both front and back.
+// → Also supports random access.
+
 
 void explainList() {
-    //almost similar to list except memory allocation - its not continuous
-    list<int> ls = {6,7};    
-    // in list we have push as front - which was not the case in vector
+
+    cout << "===== LIST =====" << endl;
+
+
+    // list is implemented as a doubly linked list.
+    // Elements do not need to be stored in continuous memory.
+
+    list<int> ls = {6, 7};
+
+
+    // Unlike vector, list provides push_front().
     ls.push_front(1);
-    ls.emplace_front(2); //another way to push_front
+
+
+    // emplace_front() is another way to add an element
+    // at the beginning.
+    ls.emplace_front(2);
+
+
+    cout << "List: ";
 
     for (auto i : ls) {
         cout << i << " ";
     }
+
     cout << endl;
 
-    //all remaining function in list are same as vector.
 
+    // Most commonly used functions are similar to vector:
+    //
+    // push_back()
+    // emplace_back()
+    // pop_back()
+    // pop_front()
+    // front()
+    // back()
+    // size()
+    // empty()
+    // clear()
+    // erase()
+    // reverse()
+    // sort()
+
+
+    cout << "First element: " << ls.front() << endl;
+    cout << "Last element: " << ls.back() << endl;
 }
 
 
-int main () {
+int main() {
+
     explainList();
+
     return 0;
 }
