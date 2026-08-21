@@ -1,339 +1,10 @@
-# C++ DSA Cheatsheet
+# C++ Cheatsheet
 
-> Quick reference for C++ syntax while solving DSA problems.
-> **Don't memorize everything — use it for a week and let repetition build muscle memory.**
-
----
-
-## 1. String
+## 1. Character Functions
 
 ```cpp
-string str = "hello";
-```
+// #include <cctype> — standalone functions, not object.method()
 
-### Common Member Functions — `str.`
-
-```cpp
-str.length();       // length
-str.size();         // length
-str.empty();        // true / false
-
-str.front();        // first character
-str.back();         // last character
-
-str[0];             // access character
-str.at(0);          // access character
-
-str.substr(1, 3);   // substring: starting index, length
-str.find("ll");     // index of first occurrence
-
-str.push_back('x');
-str.pop_back();
-
-str.clear();
-
-str.begin();
-str.end();
-
-str.rbegin();
-str.rend();
-```
-
-### String Comparison
-
-```cpp
-str == "hello";
-str != "hello";
-str < "hello";      // lexicographical comparison
-```
-
-### Reverse a String
-
-```cpp
-reverse(str.begin(), str.end());
-```
-
----
-
-## 2. Vector
-
-```cpp
-vector<int> v = {1, 2, 3};
-```
-
-### Common Member Functions — `v.`
-
-```cpp
-v.size();
-v.empty();
-
-v.front();
-v.back();
-
-v.push_back(10);
-v.pop_back();
-
-v.clear();
-
-v[0];
-v.at(0);
-
-v.begin();
-v.end();
-
-v.rbegin();
-v.rend();
-```
-
-### Common Algorithms
-
-```cpp
-sort(v.begin(), v.end());
-
-reverse(v.begin(), v.end());
-
-count(v.begin(), v.end(), 5);
-```
-
----
-
-## 3. Map
-
-```cpp
-map<char, int> mp;
-```
-
-### Think
-
-```text
-key → value
-```
-
-### Access / Insert
-
-```cpp
-mp['a']++;
-mp['b'] = 10;
-
-cout << mp['a'];
-```
-
-### Find
-
-```cpp
-mp.find('a');
-```
-
-Common check:
-
-```cpp
-if (mp.find('a') != mp.end()) {
-    // key exists
-}
-```
-
-### Delete
-
-```cpp
-mp.erase('a');
-```
-
-### Size
-
-```cpp
-mp.size();
-mp.empty();
-```
-
-### Iterate
-
-```cpp
-for (auto i = mp.begin(); i != mp.end(); i++) {
-    cout << i->first;    // key
-    cout << i->second;   // value
-}
-```
-
-Or:
-
-```cpp
-for (auto i : mp) {
-    cout << i.first;
-    cout << i.second;
-}
-```
-
-### Remember
-
-```text
-i.first   → key
-i.second  → value
-
-i->first  → key, when i is an iterator
-i->second → value, when i is an iterator
-```
-
----
-
-## 4. Unordered Map
-
-```cpp
-unordered_map<char, int> mp;
-```
-
-Usage is almost identical to `map`.
-
-```cpp
-mp['a']++;
-
-mp.find('a');
-
-mp.erase('a');
-
-mp.size();
-mp.empty();
-```
-
-### Iteration
-
-```cpp
-for (auto i : mp) {
-    cout << i.first;
-    cout << i.second;
-}
-```
-
-### Difference
-
-| `map`                 | `unordered_map`           |
-| --------------------- | ------------------------- |
-| Sorted by key         | No ordering guarantee     |
-| `O(log n)` operations | Average `O(1)` operations |
-
----
-
-## 5. Set
-
-```cpp
-set<int> s;
-```
-
-Stores **unique values**.
-
-```cpp
-s.insert(10);
-s.insert(20);
-
-s.find(10);
-
-s.erase(10);
-
-s.size();
-s.empty();
-```
-
-### Check Existence
-
-```cpp
-if (s.find(10) != s.end()) {
-    // exists
-}
-```
-
----
-
-## 6. Unordered Set
-
-```cpp
-unordered_set<int> s;
-```
-
-```cpp
-s.insert(10);
-
-s.find(10);
-
-s.erase(10);
-
-s.size();
-s.empty();
-```
-
-### Difference
-
-| `set`      | `unordered_set`       |
-| ---------- | --------------------- |
-| Sorted     | No ordering guarantee |
-| `O(log n)` | Average `O(1)`        |
-
----
-
-## 7. Algorithms
-
-> These are generally **standalone functions**, not `object.function()`.
-
-### Sort
-
-```cpp
-sort(v.begin(), v.end());
-```
-
-Descending:
-
-```cpp
-sort(v.begin(), v.end(), greater<int>());
-```
-
-Custom comparator:
-
-```cpp
-sort(v.begin(), v.end(), [](int a, int b) {
-    return a > b;
-});
-```
-
-### Reverse
-
-```cpp
-reverse(v.begin(), v.end());
-
-reverse(str.begin(), str.end());
-```
-
-### Count
-
-```cpp
-count(v.begin(), v.end(), 5);
-
-count(str.begin(), str.end(), 'a');
-```
-
-### Min / Max
-
-```cpp
-max(a, b);
-min(a, b);
-```
-
-### Swap
-
-```cpp
-swap(a, b);
-```
-
----
-
-## 8. Character Functions
-
-Include:
-
-```cpp
-#include <cctype>
-```
-
-These are **standalone functions**.
-
-```cpp
 isdigit(ch);
 isalpha(ch);
 isalnum(ch);
@@ -345,98 +16,263 @@ tolower(ch);
 toupper(ch);
 ```
 
-### Examples
+---
+
+## 2. String
 
 ```cpp
-if (isalnum(str[i])) {
-    // character is alphanumeric
-}
+string str = "hello";
+
+str.length();               // number of characters
+str.empty();                // true if empty
+
+str.front();                // first char
+str.back();                 // last char
+
+str[0];                     // access by index
+str.substr(1, 3);           // substring(startIndex, length)
+str.find("ll");             // index of first occurrence, string::npos if not found
+
+str.push_back('x');         // append char to end
+str.pop_back();             // remove last char
+str.erase(1, 3);            // remove 3 chars starting at index 1
+str.clear();                // remove all chars
+
+str == "hello";             // comparison
+str < "hello";              // lexicographical comparison
+
+reverse(str.begin(), str.end());
+
+// iteration
+for (char ch : str) { }
+for (int i = 0; i < str.length(); i++) { str[i]; }
+for (auto i = str.begin(); i != str.end(); i++) { *i; }
 ```
 
+### string::npos
+
 ```cpp
-char ch = tolower(str[i]);
+if (str.find("abc") != string::npos) { }   // found
+if (str.find("abc") == string::npos) { }   // not found
 ```
 
 ---
 
-## 9. String ↔ Integer Conversion
-
-### String → Integer
+## 3. Array
 
 ```cpp
-string str = "123";
+int arr[5] = {1, 2, 3, 4, 5};
 
-int n = stoi(str);
-```
+arr[0];                                 // access by index
 
-### Integer → String
+int n = sizeof(arr) / sizeof(arr[0]);   // size — only valid in same scope, not after passing to function
 
-```cpp
-int n = 123;
+// iteration
+for (int x : arr) { }
+for (int i = 0; i < n; i++) { arr[i]; }
+for (auto i = arr; i != arr + n; i++) { *i; }      // pointer as iterator
 
-string str = to_string(n);
+sort(arr, arr + n);
+
+// passing to function — size must be passed separately
+void func(int arr[], int n) { }
 ```
 
 ---
 
-## 10. `string::npos`
-
-`find()` returns the position if something is found.
-
-If it isn't found:
+## 4. Type Conversion
 
 ```cpp
-string::npos
+// string ↔ int
+int n    = stoi("123");
+string s = to_string(123);
+
+// char ↔ int
+int n   = ch - '0';         // char digit → int  ('5' → 5)
+char ch = '0' + n;          // int → char digit  (5 → '5')
+
+int n   = (int)ch;          // char → ASCII value
+char ch = (char)n;          // ASCII value → char
 ```
-
-### Example
-
-```cpp
-if (str.find("abc") == string::npos) {
-    // not found
-}
-```
-
-### Common Pattern
-
-```cpp
-if (str.find(ch) != string::npos) {
-    // found
-}
-```
-
-> **Remember:** `string::npos` basically means **"not found"**.
 
 ---
 
-## 11. Iterators
-
-When you see:
+## 5. Useful Constants
 
 ```cpp
-v.begin();
-v.end();
+// #include <climits>
+INT_MAX;        // 2,147,483,647  — use to initialize a min tracker
+INT_MIN;        // -2,147,483,648 — use to initialize a max tracker
+LLONG_MAX;      // for long long max
+LLONG_MIN;      // for long long min
 ```
 
-Think:
+---
 
-> Iterator pointing to the beginning/end of the container.
+> **Iteration — when to use which:**
+> - `for (auto x : c)` — simplest; use when you only need values
+> - `for (int i = 0; ...)` — use when you need the index (arrays/vectors only)
+> - `for (auto i = c.begin(); i != c.end(); i++)` — use when erasing during iteration, or for containers with no index access (map, set)
 
-Most commonly used with algorithms:
+---
+
+## Container Complexity Summary
+
+| Container | Access | Insert / Find / Erase | Ordered |
+|---|---|---|---|
+| `vector` | `O(1)` | `O(1)` end, `O(n)` middle | — |
+| `map` | — | `O(log n)` | yes (by key) |
+| `unordered_map` | — | `O(1)` avg | no |
+| `set` | — | `O(log n)` | yes |
+| `unordered_set` | — | `O(1)` avg | no |
+| `stack` | top only | `O(1)` | — |
+| `queue` | front/back | `O(1)` | — |
+| `priority_queue` | top only | `O(log n)` | by priority |
+
+> Iteration is `O(n)` for all containers.
+
+---
+
+## 6. Vector
 
 ```cpp
+vector<int> v = {1, 2, 3};
+
+v.size();                                   // number of elements
+v.empty();                                  // true if empty
+
+v.front();                                  // first element
+v.back();                                   // last element
+
+v.push_back(10);                            // add to end
+v.pop_back();                               // remove last element
+v.clear();                                  // remove all elements
+
+v[0];                                       // access by index
+
+// iteration
+for (int x : v) { }
+for (int i = 0; i < v.size(); i++) { v[i]; }
+for (auto i = v.begin(); i != v.end(); i++) { *i; }
+
 sort(v.begin(), v.end());
+reverse(v.begin(), v.end());
+count(v.begin(), v.end(), 5);               // count occurrences of 5
+```
+
+| Operation | Time Complexity |
+|---|---|
+| `v[i]` / `front` / `back` | `O(1)` |
+| `push_back` / `pop_back` | `O(1)` amortized |
+| insert / erase (middle) | `O(n)` |
+| iteration | `O(n)` |
+
+---
+
+## 7. Map
+
+```cpp
+map<char, int> mp;          // sorted by key, O(log n)
+
+mp['a']++;                  // insert or update
+mp['b'] = 10;
+
+mp.find('a');               // returns iterator, mp.end() if not found
+if (mp.find('a') != mp.end()) { }   // check if key exists
+mp.count('a');              // 0 or 1 — quick existence check
+
+mp.erase('a');
+mp.size();
+mp.empty();
+
+// range-based: dot notation (i.first / i.second)
+for (auto i : mp) { i.first; i.second; }
+
+// iterator-based: arrow notation (i->first / i->second)
+for (auto i = mp.begin(); i != mp.end(); i++) { i->first; i->second; }
+```
+
+| Operation | Time Complexity |
+|---|---|
+| insert / find / erase | `O(log n)` |
+| iteration | `O(n)` |
+
+---
+
+## 8. Unordered Map
+
+```cpp
+unordered_map<char, int> mp;    // no ordering, avg O(1)
+```
+
+Same API as `map`: `[]`, `find()`, `count()`, `erase()`, `size()`, `empty()`. Iterate with range-based for.
+
+| Operation | Time Complexity |
+|---|---|
+| insert / find / erase | `O(1)` avg |
+| iteration | `O(n)` |
+
+---
+
+## 9. Set
+
+```cpp
+set<int> s;                 // unique values, sorted
+
+s.insert(10);
+s.erase(10);
+
+if (s.find(10) != s.end()) { }  // check existence
+s.count(10);                    // 0 or 1 — quick existence check
+
+s.size();
+s.empty();
+
+// iteration
+for (int x : s) { }                                        // sorted order
+for (auto i = s.begin(); i != s.end(); i++) { *i; }
+```
+
+| Operation | Time Complexity |
+|---|---|
+| insert / find / erase | `O(log n)` |
+| iteration | `O(n)` |
+
+---
+
+## 10. Unordered Set
+
+```cpp
+unordered_set<int> s;       // unique values, no ordering, avg O(1)
+```
+
+Same API as `set`: `insert()`, `find()`, `count()`, `erase()`, `size()`, `empty()`. Iterate with range-based for (no ordering).
+
+| Operation | Time Complexity |
+|---|---|
+| insert / find / erase | `O(1)` avg |
+| iteration | `O(n)` |
+
+---
+
+## 11. Algorithms
+
+```cpp
+// standalone functions, not object.method()
+
+sort(v.begin(), v.end());
+sort(v.begin(), v.end(), greater<int>());           // descending
+sort(v.begin(), v.end(), [](int a, int b) {         // custom comparator
+    return a > b;
+});
 
 reverse(v.begin(), v.end());
 
-count(v.begin(), v.end(), x);
-```
+count(v.begin(), v.end(), 5);                       // count occurrences
 
-### General Pattern
-
-```cpp
-container.begin()
-container.end()
+max(a, b);
+min(a, b);
+swap(a, b);
 ```
 
 ---
@@ -444,376 +280,74 @@ container.end()
 ## 12. Pair
 
 ```cpp
-pair<char, int> p;
-```
-
-### Access
-
-```cpp
-p.first;
-p.second;
-```
-
-### Example
-
-```cpp
 pair<char, int> p = {'a', 5};
 
-cout << p.first;   // a
-cout << p.second;  // 5
+p.first;        // 'a'
+p.second;       // 5
+
+i->first;       // key — when i is a map iterator
+i->second;      // value
 ```
 
-### Common with Maps
-
-```cpp
-i->first;
-i->second;
-```
+> Access to `first` / `second` is always `O(1)`.
 
 ---
 
 ## 13. Priority Queue
 
 ```cpp
-priority_queue<int> pq;
-```
+priority_queue<int> pq;                                 // max heap by default
 
-### Max Heap by Default
-
-```cpp
 pq.push(10);
-pq.push(5);
-pq.push(20);
-
-pq.top();      // 20
-
-pq.pop();      // removes top element
-
-pq.empty();
-pq.size();
-```
-
-### Min Heap
-
-```cpp
-priority_queue<int, vector<int>, greater<int>> pq;
-```
-
----
-
-## 14. Raw Array
-
-```cpp
-int arr[5] = {1, 2, 3, 4, 5};
-```
-
-### Access
-
-```cpp
-arr[0];
-arr[i];
-```
-
-### Get Size
-
-```cpp
-int n = sizeof(arr) / sizeof(arr[0]);
-```
-
-> **Important:** When passed to a function, the array size generally needs to be passed separately.
-
-```cpp
-void func(int arr[], int n) {
-    // ...
-}
-```
-
-For vectors:
-
-```cpp
-v.size();
-```
-
----
-
-# Quick Mental Classification
-
-The biggest thing to remember is **what comes before/after `.`**
-
-## 1. Container / Member Operation
-
-Usually:
-
-```cpp
-object.function()
-```
-
-Examples:
-
-```cpp
-str.length();
-str.find();
-
-v.size();
-v.push_back();
-
-mp.find();
-mp.erase();
-
-s.insert();
-```
-
-Think:
-
-> **"I have an object → use `.` → call its member function."**
-
----
-
-## 2. General Algorithm / Function
-
-Usually:
-
-```cpp
-function(...)
-```
-
-Examples:
-
-```cpp
-sort(...);
-reverse(...);
-count(...);
-
-max(...);
-min(...);
-swap(...);
-```
-
-Think:
-
-> **"This operation works on things → call the function directly."**
-
----
-
-## 3. Character Operation
-
-```cpp
-isdigit(ch);
-isalpha(ch);
-isalnum(ch);
-
-islower(ch);
-isupper(ch);
-
-tolower(ch);
-toupper(ch);
-```
-
-These are standalone functions.
-
----
-
-## 4. Conversion
-
-```cpp
-stoi(str);
-to_string(n);
-```
-
-These are also standalone functions.
-
----
-
-# ⭐ One-Page DSA Reference
-
-## String
-
-```cpp
-string str;
-
-str.size();
-str.empty();
-
-str.front();
-str.back();
-
-str[0];
-str.at(0);
-
-str.substr(start, length);
-str.find("abc");
-
-str.push_back(ch);
-str.pop_back();
-
-str.clear();
-
-str.begin();
-str.end();
-
-str.rbegin();
-str.rend();
-```
-
-## Vector
-
-```cpp
-vector<int> v;
-
-v.size();
-v.empty();
-
-v.front();
-v.back();
-
-v.push_back(x);
-v.pop_back();
-
-v.clear();
-
-v[0];
-v.at(0);
-
-v.begin();
-v.end();
-
-v.rbegin();
-v.rend();
-```
-
-## Map
-
-```cpp
-map<char, int> mp;
-
-mp[key]++;
-mp[key] = value;
-
-mp.find(key);
-mp.erase(key);
-
-mp.size();
-mp.empty();
-
-mp.begin();
-mp.end();
-```
-
-### Map Element
-
-```cpp
-i.first;       // key
-i.second;      // value
-
-i->first;      // key, when i is iterator
-i->second;     // value, when i is iterator
-```
-
-## Set
-
-```cpp
-set<int> s;
-
-s.insert(x);
-s.find(x);
-s.erase(x);
-
-s.size();
-s.empty();
-```
-
-## Algorithms
-
-```cpp
-sort(v.begin(), v.end());
-
-reverse(v.begin(), v.end());
-
-count(v.begin(), v.end(), x);
-
-max(a, b);
-min(a, b);
-
-swap(a, b);
-```
-
-## Characters
-
-```cpp
-isdigit(ch);
-isalpha(ch);
-isalnum(ch);
-
-islower(ch);
-isupper(ch);
-
-tolower(ch);
-toupper(ch);
-```
-
-## Conversion
-
-```cpp
-stoi(str);
-
-to_string(n);
-```
-
-## Special
-
-```cpp
-string::npos;
-```
-
-## Priority Queue
-
-```cpp
-priority_queue<int> pq;
-
-pq.push(x);
-pq.pop();
-pq.top();
+pq.top();       // largest element
+pq.pop();       // removes top
 
 pq.size();
 pq.empty();
+
+priority_queue<int, vector<int>, greater<int>> pq;      // min heap
 ```
 
-### Min Heap
-
-```cpp
-priority_queue<int, vector<int>, greater<int>> minPQ;
-```
+| Operation | Time Complexity |
+|---|---|
+| `push` / `pop` | `O(log n)` |
+| `top` | `O(1)` |
 
 ---
 
-# 🧠 The Rule for the Next Week
-
-> **Don't try to memorize this.**
-
-If you forget:
+## 14. Stack
 
 ```cpp
-str.find(...)
+stack<int> st;              // LIFO — last in, first out
+
+st.push(10);
+st.top();                   // top element (most recently pushed)
+st.pop();                   // removes top
+
+st.size();
+st.empty();
 ```
 
-**Look it up.**
+| Operation | Time Complexity |
+|---|---|
+| `push` / `pop` / `top` | `O(1)` |
 
-If you forget:
+---
+
+## 15. Queue
 
 ```cpp
-sort(v.begin(), v.end())
+queue<int> q;               // FIFO — first in, first out
+
+q.push(10);
+q.front();                  // first element (oldest, removed next)
+q.back();                   // last element (most recently added)
+q.pop();                    // removes front
+
+q.size();
+q.empty();
 ```
 
-**Look it up.**
-
-If you forget:
-
-```cpp
-mp[key]++;
-```
-
-**Look it up.**
-
-The goal is not to memorize the cheatsheet.
-
-The goal is to use it repeatedly until you **stop needing it**.
+| Operation | Time Complexity |
+|---|---|
+| `push` / `pop` / `front` / `back` | `O(1)` |
