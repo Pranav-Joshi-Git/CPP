@@ -24,6 +24,7 @@ toupper(ch);
 string str = "hello";
 
 str.length();               // number of characters
+str.size();                 // number of characters
 str.empty();                // true if empty
 
 str.front();                // first char
@@ -70,7 +71,7 @@ int n = sizeof(arr) / sizeof(arr[0]);   // size — only valid in same scope, no
 // iteration
 for (int x : arr) { }
 for (int i = 0; i < n; i++) { arr[i]; }
-for (auto i = arr; i != arr + n; i++) { *i; }      // pointer as iterator
+for (auto i = arr; i != arr + n; i++) { *i; }      // pointer iteration
 
 sort(arr, arr + n);
 
@@ -112,7 +113,7 @@ LLONG_MIN;      // for long long min
 > **Iteration — when to use which:**
 > - `for (auto x : c)` — simplest; use when you only need values
 > - `for (int i = 0; ...)` — use when you need the index (arrays/vectors only)
-> - `for (auto i = c.begin(); i != c.end(); i++)` — use when erasing during iteration, or for containers with no index access (map, set)
+> - `for (auto i = c.begin(); i != c.end(); i++)` — use when you need iterators, e.g. for map/set or iterator-based operations.
 
 ---
 
@@ -127,7 +128,7 @@ LLONG_MIN;      // for long long min
 | `unordered_set` | — | `O(1)` avg | no |
 | `stack` | top only | `O(1)` | — |
 | `queue` | front/back | `O(1)` | — |
-| `priority_queue` | top only | `O(log n)` | by priority |
+| `priority_queue` | `O(1)` top | `O(log n)` push/pop | by priority |
 
 > Iteration is `O(n)` for all containers.
 
@@ -150,6 +151,13 @@ v.clear();                                  // remove all elements
 
 v[0];                                       // access by index
 
+// binary search on sorted range
+lower_bound(v.begin(), v.end(), x);         // returns iterator to first element which is >= x
+upper_bound(v.begin(), v.end(), x);         // returns iterator to first element which is >  x
+
+// number of occurrences of x in a sorted vector  
+upper_bound(v.begin(), v.end(), x) - lower_bound(v.begin(), v.end(), x);      
+
 // iteration
 for (int x : v) { }
 for (int i = 0; i < v.size(); i++) { v[i]; }
@@ -164,7 +172,7 @@ count(v.begin(), v.end(), 5);               // count occurrences of 5
 |---|---|
 | `v[i]` / `front` / `back` | `O(1)` |
 | `push_back` / `pop_back` | `O(1)` amortized |
-| insert / erase (middle) | `O(n)` |
+| insert / erase (beginning or middle) | `O(n)` |
 | iteration | `O(n)` |
 
 ---
@@ -174,12 +182,15 @@ count(v.begin(), v.end(), 5);               // count occurrences of 5
 ```cpp
 map<char, int> mp;          // sorted by key, O(log n)
 
-mp['a']++;                  // insert or update
+mp['a']++;                  // insert(creates if not present) or update 
 mp['b'] = 10;
 
 mp.find('a');               // returns iterator, mp.end() if not found
 if (mp.find('a') != mp.end()) { }   // check if key exists
 mp.count('a');              // 0 or 1 — quick existence check
+if (mp.count('a')) {
+    // exists
+}
 
 mp.erase('a');
 mp.size();
