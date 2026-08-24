@@ -64,6 +64,3 @@ int main() {
 // & here means "create a reference to age".
 // ref becomes another name (alias) for age.
 // A reference is not a pointer; it doesn't separately store an address like ptr does.
-// Quick memory trick:
-// & = WHERE
-// * = WHAT

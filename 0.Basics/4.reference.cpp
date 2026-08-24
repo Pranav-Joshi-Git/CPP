@@ -20,7 +20,7 @@ int main() {
   anotherScore = 800;
 
   cout << "\nAfter updating through reference:\n";
-  cout << "Score: " << score << endl;
+  cout << "\nScore: " << score << endl;
   cout << "Reference: " << anotherScore << endl;
   cout << "Value using pointer: " << *myPointer << endl;
 
