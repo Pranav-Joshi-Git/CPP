@@ -7,7 +7,7 @@ using namespace std;
 // Lambda function syntax:
 //
 // [] (parameters) {
-//     // body
+//      body
 // };
 //
 // []      → capture list
