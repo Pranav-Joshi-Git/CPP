@@ -52,6 +52,8 @@ void merge(vector<int> &nums, int low, int mid, int high) {
     vector<int> temp;
 
     // Pointers for the two sorted portions
+    // left => first element of left half
+    // right => first element of right half
     int left = low;
     int right = mid + 1;
 

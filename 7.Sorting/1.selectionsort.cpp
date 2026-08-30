@@ -9,6 +9,8 @@ void selectionSort(vector<int> & nums) {
     int n = nums.size();
 
     // i represents the position where the next minimum should be placed
+    // Run until n-2 because after placing the minimum at n-2,
+    // only one element remains, which is automatically in its correct position.
     for (int i = 0; i <= n - 2; i++) {
 
         // Assume current element is the minimum
