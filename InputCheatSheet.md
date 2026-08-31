@@ -8,7 +8,7 @@ Quick reference for handling common input formats in coding exams and day-to-day
 
 | Task | Function / Tool | Section |
 | ---- | --------------- | ------- |
-| Fast I/O setup | `ios::sync_with_stdio(false); cin.tie(NULL)` | [Fast I/O Boilerplate](#1-fast-io-boilerplate) |
+| Fast I/O setup | `ios::sync_with_stdio(false); cin.tie(nullptr);` | [Fast I/O Boilerplate](#1-fast-io-boilerplate) |
 | Read integer | `cin >> x` | [Primitive Input](#2-primitive-input) |
 | Read complete line | `getline(cin, line)` | [Primitive Input](#2-primitive-input) |
 | Clear leftover newline | `cin.ignore()` | [Primitive Input](#2-primitive-input) |
@@ -36,7 +36,7 @@ using namespace std;
 
 int main() {
     ios::sync_with_stdio(false);
-    cin.tie(NULL);
+    cin.tie(nullptr);
 
     // cin, cout, getline all work normally below — only faster now
     int n;
@@ -46,12 +46,14 @@ int main() {
 }
 ```
 
-By default, C++ syncs `cin`/`cout` with C's `scanf`/`printf` and flushes `cout` before every `cin` read. Both add overhead. These two lines disable that, making I/O significantly faster for large inputs.
+By default, C++ synchronizes `iostream` with C `stdio` and `cin` is tied to `cout`.
+These two lines disable synchronization and untie `cin` from `cout`,
+which can significantly improve I/O performance for large inputs.
 
 | Line | What it does |
 | ---- | ------------ |
 | `ios::sync_with_stdio(false)` | Stops syncing with `scanf`/`printf` — `cin` becomes faster |
-| `cin.tie(NULL)` | Stops auto-flushing `cout` before each `cin` read |
+| `cin.tie(nullptr)` | unties `cin` from `cout`, so `cout` is not automatically flushed before `cin` reads input |
 
 **When to use:** Any problem with large input — add as a habit at the top of `main()`.
 
