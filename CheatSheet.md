@@ -119,16 +119,16 @@ LLONG_MIN;      // for long long min
 
 ## Container Complexity Summary
 
-| Container | Access | Insert / Find / Erase | Ordered |
-|---|---|---|---|
-| `vector` | `O(1)` | `O(1)` end, `O(n)` middle | — |
-| `map` | — | `O(log n)` | yes (by key) |
-| `unordered_map` | — | `O(1)` avg | no |
-| `set` | — | `O(log n)` | yes |
-| `unordered_set` | — | `O(1)` avg | no |
-| `stack` | top only | `O(1)` | — |
-| `queue` | front/back | `O(1)` | — |
-| `priority_queue` | `O(1)` top | `O(log n)` push/pop | by priority |
+| Container | Access TC | Access / Lookup By | Sample Access | Insert / Find / Erase | Ordered |
+|---|---:|---|---|---|---|
+| `vector` | `O(1)` | index | `v[0]` | `O(1)` end, `O(n)` middle | — |
+| `map` | `O(log n)` | key | `mp[key]` | `O(log n)` | yes (by key) |
+| `unordered_map` | `O(1)` avg | key | `ump[key]` | `O(1)` avg | no |
+| `set` | `O(log n)` | value | `*st.begin()` | `O(log n)` | yes |
+| `unordered_set` | `O(1)` avg | value | `*ust.begin()` | `O(1)` avg | no |
+| `stack` | `O(1)` | top | `st.top()` | `O(1)` push/pop | — |
+| `queue` | `O(1)` | front/back | `q.front()` / `q.back()` | `O(1)` push/pop | — |
+| `priority_queue` | `O(1)` | top | `pq.top()` | `O(log n)` push/pop | by priority |
 
 > Iteration is `O(n)` for all containers.
 
@@ -304,7 +304,39 @@ i->second;      // value
 
 ---
 
-## 13. Priority Queue
+## 13. Queue
+
+```cpp
+queue<int> q;               // FIFO — first in, first out
+
+q.push(10);
+q.front();                  // first element (oldest, removed next)
+q.back();                   // last element (most recently added)
+q.pop();                    // removes front
+
+q.size();
+q.empty();
+
+// iteration / traversal
+// queue does not provide iterators
+// to traverse, access front and pop
+while (!q.empty()) {
+    cout << q.front() << " ";
+    q.pop();
+}
+```
+> Note: The only thing to remember about that traversal is: **it empties the queue.**
+
+| Operation                         | Time Complexity |
+| --------------------------------- | --------------- |
+| `push` / `pop` / `front` / `back` | `O(1)`          |
+| `size` / `empty`                  | `O(1)`          |
+| traversal                         | `O(n)`          |
+
+
+---
+
+## 14. Priority Queue
 
 ```cpp
 priority_queue<int> pq;                                 // max heap by default
@@ -317,16 +349,27 @@ pq.size();
 pq.empty();
 
 priority_queue<int, vector<int>, greater<int>> pq;      // min heap
+// iteration / traversal
+// priority_queue does not provide iterators
+// to traverse in priority order, access top and pop
+while (!pq.empty()) {
+    cout << pq.top() << " ";
+    pq.pop();
+}
 ```
+> Note: Traversal is O(n log n) and removes all elements from the priority queue.
 
-| Operation | Time Complexity |
-|---|---|
-| `push` / `pop` | `O(log n)` |
-| `top` | `O(1)` |
+| Operation        | Time Complexity |
+| ---------------- | --------------- |
+| `push` / `pop`   | `O(log n)`      |
+| `top`            | `O(1)`          |
+| `size` / `empty` | `O(1)`          |
+| traversal        | `O(n log n)`    |
+
 
 ---
 
-## 14. Stack
+## 15. Stack
 
 ```cpp
 stack<int> st;              // LIFO — last in, first out
@@ -337,28 +380,22 @@ st.pop();                   // removes top
 
 st.size();
 st.empty();
-```
 
-| Operation | Time Complexity |
-|---|---|
-| `push` / `pop` / `top` | `O(1)` |
+// iteration / traversal
+// stack does not provide iterators
+// to traverse, access top and pop
+while (!st.empty()) {
+    cout << st.top() << " ";
+    st.pop();
+}
+```
+> Note: Traversal is `O(n)` but removes all elements from the stack.
+
+| Operation              | Time Complexity |
+| ---------------------- | --------------- |
+| `push` / `pop` / `top` | `O(1)`          |
+| `size` / `empty`       | `O(1)`          |
+| traversal              | `O(n)`          |
+
 
 ---
-
-## 15. Queue
-
-```cpp
-queue<int> q;               // FIFO — first in, first out
-
-q.push(10);
-q.front();                  // first element (oldest, removed next)
-q.back();                   // last element (most recently added)
-q.pop();                    // removes front
-
-q.size();
-q.empty();
-```
-
-| Operation | Time Complexity |
-|---|---|
-| `push` / `pop` / `front` / `back` | `O(1)` |
