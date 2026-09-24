@@ -79,8 +79,6 @@ sort(arr, arr + n);
 void func(int arr[], int n) { }
 ```
 
----
-
 ## 4. Type Conversion
 
 ```cpp
@@ -92,8 +90,14 @@ string s = to_string(123);
 int n   = ch - '0';         // char digit → int  ('5' → 5)
 char ch = '0' + n;          // int → char digit  (5 → '5')
 
-int n   = (int)ch;          // char → ASCII value
-char ch = (char)n;          // ASCII value → char
+// char ↔ ASCII value
+int n   = static_cast<int>(ch);   // char → ASCII value
+char ch = static_cast<char>(n);   // ASCII value → char
+
+// Numeric type conversion
+long long x = static_cast<long long>(n);
+int n       = static_cast<int>(x);
+double d    = static_cast<double>(n);
 ```
 
 ---
