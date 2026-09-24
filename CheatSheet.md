@@ -98,6 +98,14 @@ char ch = static_cast<char>(n);   // ASCII value → char
 long long x = static_cast<long long>(n);
 int n       = static_cast<int>(x);
 double d    = static_cast<double>(n);
+
+// LL suffix → treat literal as long long
+long long x = 1000000000LL;
+long long y = 2LL * n;
+
+// Convert before operation to prevent int overflow
+int a = 100000, b = 100000;
+long long z = 1LL * a * b;
 ```
 
 ---
