@@ -1,0 +1,59 @@
+
+
+Chat vs Agents
+
+Chat is : Question => Answer
+You Ask -> AI Replies -> You do the work
+
+
+Agent is : Goal => Result
+You -> Agent (Plan & Executes) -> Done
+
+
+AI Agent is made up of four components
+
+1. The LLM 
+	- Reasoning Engine
+	- Understands Language
+	- Makes decisions
+	
+2. The Tools
+	- Read Files
+	- Run Code
+	- Search Web
+	- Call APIs
+	- Edit Files
+	
+3. The Loop
+	- Keep going until task done
+	- Doesn't stop after one response
+	
+4. The Context
+	- CLAUDE.md
+	- Conversation History
+	- Memory Files
+	- Skills
+	
+	
+	
+AI Harness or agent harness is a software infrastructure and runtime scaffolding that surrounds
+a LLM to turn it into a working AI agent.
+
+
+AGENTS.md file is just like a system prompt. Custom instructions the agent should follow everytime it wants to do something.
+Kind of ALWAYS ON context for agent.
+So for every new session or task, before the model answers or does our task, it will load up this file first
+
+For Claude its CLAUDE.md
+For Gemini its GEMINI.md
+For Codex/Openclaw its AGENTS.md
+
+Use it for onboarding an AGENT.
+Analogy -> it is like code of conduct or company policies for a new hire.
+
+
+
+MEMORY.md -> contains the things that the agent have learnt over time while interacting
+we can ask agent to keep on updating this file whenever it learns something new about us, or if we correct it for something.
+
+It is a place where we can have our latest info or preferences.
