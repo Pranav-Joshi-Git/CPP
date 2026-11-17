@@ -57,3 +57,19 @@ MEMORY.md -> contains the things that the agent have learnt over time while inte
 we can ask agent to keep on updating this file whenever it learns something new about us, or if we correct it for something.
 
 It is a place where we can have our latest info or preferences.
+
+Skills - SOPs for AI
+Used to avoid re-explaining our standards for a particular task in every session
+
+Skills is a saved document claude loads automatically when you invoke it.
+Write your SOP once. Agent follows it everytime.
+
+e.g. - code-review skill contains all the details about performing code review, like PR name, coding standards, var names etc.
+once we have a proper skill for it, we don't need to explain it again and again
+just invoke using /code-review and agent will follow exact same steps to perform that task
+
+we don't want our memory to pile up for this kind of things, so we create skills for it
+
+most agents use skill-creator skill to create a skill
+
+Skills Precedence:
