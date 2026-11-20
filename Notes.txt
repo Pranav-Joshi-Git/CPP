@@ -1,12 +1,14 @@
-Hi, I'm an AEM Developer with over 4 years of experience, primarily working on AEM Sites, Forms and DAM.
+Hi, I'm an Adobe Experience Manager Developer with over 4 years of experience.
 
-I started my career at LTIMindtree, where I worked on the Ministry of Corporate Affairs project. My work mainly involved AEM Sites and Adaptive Forms, particularly the forms used for company incorporation. For the last two years, every new company being incorporated in India has been filing the forms we developed.
+I started my career at LTIMindtree, where I worked with the Ministry of Corporate Affairs as an AEM Sites and Forms Developer. I got the opportunity to work on company incorporation forms. For the last two years, every new company being incorporated in India has been filing the forms we developed.
 
-After that, I joined Infosys and started working as an AEM Sites and DAM Developer for T-Mobile. I was part of the team that built a centralized Digital Asset Management portal, which was used across more than 10 websites.
+After that, I joined Infosys and started working as an AEM Sites and Assets Developer for T-Mobile. I was part of the team that built a centralized Digital Asset Management portal, which is being used across more than 10 T-Mobile websites.
 
-Alongside my project work, I also got an opportunity to explore another part of AEM called Edge Delivery Services, where I completed hands-on assignments and capstone projects.
+A few months ago, I also got an opportunity to explore another part of AEM called Edge Delivery Services, where I completed hands-on assignments and capstone projects.
 
-Apart from my AEM experience, I had worked on a few machine learning projects during my college days, and recently I've been exploring various AI concepts.
+Apart from my AEM experience, I also worked on a few machine learning projects during my college days, and recently I've been exploring various AI concepts.
+
+
 
 Chat vs Agents
 
