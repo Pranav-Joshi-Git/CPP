@@ -1,0 +1,97 @@
+I have an upcoming technical interview and want to refresh my understanding of this college project.
+
+There is no README in this repository. You must understand the project by analyzing the actual source code, folder structure, configuration files, dependencies, datasets and other available artifacts.
+
+My goal is to prepare a technically accurate 2–3 minute project explanation and handle likely interview questions. I do not need an exhaustive codebase walkthrough.
+
+## 1. Project Understanding
+First, reverse-engineer the project and explain:
+- What is the project about?
+- What problem does it solve?
+- What is its primary objective?
+- What are its main features?
+- What is the end-to-end workflow?
+- Who or what are its inputs and outputs?
+
+Base your explanation on the actual implementation. Do not invent missing functionality.
+
+## 2. Technology Stack
+Identify:
+- Programming languages.
+- Frameworks and libraries.
+- Machine learning libraries.
+- Database and storage technologies, if any.
+- Other important tools.
+
+Explain briefly why each major technology is used in this project.
+
+## 3. Architecture and Implementation
+- Explain the overall architecture.
+- Identify the major modules and their responsibilities.
+- Explain how the components interact.
+- Walk through the execution flow step by step.
+- Reference actual filenames, classes and functions.
+- Include a simple architecture diagram if useful.
+
+## 4. Machine Learning Algorithm — PRIORITY SECTION
+This is particularly important. Identify the exact ML algorithm used in the project and explain it thoroughly enough for an interview.
+
+Cover:
+
+1. What is the algorithm? Explain it in simple terms.
+2. How does it work internally? Explain the mathematical or logical intuition.
+3. Why was this particular algorithm selected for this problem?
+4. What alternatives could have been used, and why might this algorithm be more suitable?
+5. What are its advantages and limitations?
+6. What are its important hyperparameters, if applicable?
+7. What preprocessing or feature engineering was performed?
+8. How was the model trained?
+9. How was the model evaluated?
+10. Which evaluation metrics were used, and what do they mean?
+11. How does the model make predictions on new/unseen data?
+12. What are the important implementation details in this repository?
+
+Also explain the actual model training and prediction code, referencing the relevant files and functions.
+
+If multiple algorithms are used, explain each one and distinguish the primary algorithm from supporting techniques.
+
+Do not assume that an algorithm was selected for a particular reason unless the code or available artifacts support that conclusion. Clearly label reasonable explanations as likely justifications rather than confirmed historical decisions.
+
+## 5. Data and Processing
+- Where does the dataset come from?
+- What does it contain?
+- What are the input features and target variable?
+- How is the data cleaned and preprocessed?
+- Is there a train-test split?
+- Are there any missing-value handling, encoding, scaling or feature-selection steps?
+- Explain the data flow from raw input to final prediction.
+
+## 6. My Potential Contributions
+Identify the major development areas where I may have contributed.
+
+Do not assume I personally implemented anything without evidence. Separate:
+- What is confirmed by the repository.
+- What I should verify from my own recollection.
+
+## 7. Challenges and Solutions
+Identify 2–3 meaningful technical challenges based on the implementation and explain how they were addressed.
+
+If you cannot establish actual historical challenges, suggest plausible discussion points and clearly label them as suggestions.
+
+## 8. Interview Preparation
+Prepare:
+- A natural 2–3 minute project explanation.
+- 10 likely technical interview questions with concise answers.
+- At least 5 questions specifically around the ML algorithm, its working, selection, training and evaluation.
+- A few deeper follow-up questions that test whether I genuinely understand the implementation.
+
+## Output Guidelines
+- Keep everything concise and interview-oriented.
+- Prioritize understanding over documentation volume.
+- Reference actual filenames, classes and function names.
+- Explain technical concepts in simple language, but retain technical accuracy.
+- Highlight unclear areas and anything I need to verify.
+- Never fabricate project details, results, accuracy scores or personal contributions.
+- Do not explain every file or generate lengthy documentation.
+
+My goal is to confidently explain the project and understand the ML algorithm well enough to answer follow-up questions. I am revisiting an old college project, so prioritize the concepts most likely to matter in an interview.
